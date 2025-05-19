@@ -170,25 +170,32 @@ public class OrderService {
 		//사용 예시는 아래 메인메서드에 있습니다. 
 		
 		List<Order> tmp = new ArrayList<Order>();
-			if (str == null) {
+			
+//		if(  < ) {
+//			
+//		}
+		
+		if (str == null) {
 //				Date current = new Date(); 
 //				sdf.format(current);
-				for(Order o : orders) {
-					if(sdf.format(o.getDate()).equals(sdf.format(new Date()))) // 입력 값이 없을경우 그날 매출 반환
-						tmp.add(o);
-				}
-			} else {
-				for(Order o : orders) {
-					if(str.equals(sdf.format(o.getDate()))) {					
-						tmp.add(o);
-					}
+			for(Order o : orders) {
+				if(sdf.format(o.getDate()).equals(sdf.format(new Date()))) // 입력 값이 없을경우 그날 매출 반환
+					tmp.add(o);
+			}
+		} 
+		else {
+			for(Order o : orders) {
+				if(str.equals(sdf.format(o.getDate()))) {					
+					tmp.add(o);
 				}
 			}
-			if(tmp.isEmpty()) {
-				System.out.println("주문내역이 없습니다.");
-			}
-			
-			return tmp;
+		} 
+		
+		if(tmp.isEmpty()) {
+			System.out.println("주문내역이 없습니다.");
+		}
+		
+		return tmp;
 	}
 	
 	public void printSalesList(List<Order> orders) { // 관리자 및 커스토머 서비스에서 List<Order> 를 지역변수로 만들어놓고 집어넣어서 반환 받으시면 됩니다. 
